@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Interativo de Filmes e Séries</title> 
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="js/main.js" type="module" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1><a href="#" id="home-link">CineStream</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-home">Início</a></li>
+                    <li><a href="#" id="nav-about">Sobre</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home-view">
+            <div class="container">
+                <h2>Lançamentos Recentes</h2> 
+                
+                <div id="media-type-filter">
+                    <input type="radio" id="media-movie" name="media_type" value="movie" checked>
+                    <label for="media-movie">Filmes</label>
+                    <input type="radio" id="media-tv" name="media_type" value="tv">
+                    <label for="media-tv">Séries (TV)</label>
+                </div>
+
+                <div id="filters">
+                    <label for="genre-filter">Filtrar por Gênero:</label>
+                    <select id="genre-filter">
+                        <option value="">Todos</option>
+                        </select>
+                </div>
+
+                <div id="loading-spinner" class="hidden">
+                    <p>Carregando...</p> 
+                </div>
+
+                <div id="error-message" class="hidden">
+                    <p>Erro ao buscar os dados. Tente novamente mais tarde.</p>
+                </div>
+
+                <div id="movie-list-container">
+                    </div>
+
+                <nav id="pagination">
+                    <button id="prev-page">Anterior</button>
+                    <span id="current-page">Página 1</span>
+                    <button id="next-page">Próxima</button>
+                </nav>
+            </div>
+        </section>
+
+        <section id="details-view" class="hidden">
+            <div class="container">
+                <button id="back-to-home">Voltar</button>
+                <div id="details-content"></div>
+            </div>
+        </section>
+
+        <section id="about-view" class="hidden">
+            <div class="container">
+                <h2>Sobre a Equipe</h2> 
+                <ul>
+                    <li>Luis Felipe Ferreira Martins</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Projeto desenvolvido por: Luis Felipe Ferreira Martins</p>
+    </footer>
+
+</body>
+</html>
