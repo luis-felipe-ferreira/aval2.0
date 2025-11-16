@@ -75,3 +75,42 @@ export function renderDetails(details, mediaType) {
 
     container.innerHTML = detailsHTML;
 }
+
+export function renderGenres(genres) {
+    const select = document.getElementById('genre-filter');
+    select.innerHTML = '<option value="">Todos</option>'; 
+    
+    if (!genres || genres.length === 0) return;
+
+    genres.forEach(genre => {
+        const option = document.createElement('option');
+        option.value = genre.id;
+        option.textContent = genre.name;
+        select.appendChild(option);
+    });
+}
+
+export function showLoading(isLoading) {
+    const spinner = document.getElementById('loading-spinner');
+    if (spinner) {
+        if (isLoading) {
+            spinner.classList.remove('hidden');
+            document.getElementById('movie-list-container').classList.add('hidden');
+            document.getElementById('error-message').classList.add('hidden');
+        } else {
+            spinner.classList.add('hidden');
+            document.getElementById('movie-list-container').classList.remove('hidden');
+        }
+    }
+}
+
+export function showErrorMessage(show) {
+    const errorEl = document.getElementById('error-message');
+    if (errorEl) {
+        if (show) {
+            errorEl.classList.remove('hidden');
+        } else {
+            errorEl.classList.add('hidden');
+        }
+    }
+}
