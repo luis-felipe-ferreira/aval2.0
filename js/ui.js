@@ -34,3 +34,44 @@ export function renderMedia(mediaItems, mediaType) {
         container.appendChild(mediaCard);
     });
 }
+
+
+export function renderDetails(details, mediaType) {
+    const container = document.getElementById('details-content');
+    container.innerHTML = ''; 
+
+    const title = details.title || details.name || "Título não disponível";
+    const synopsis = details.overview || "Sinopse não disponível.";
+    const rating = details.vote_average ? details.vote_average.toFixed(1) : "N/A";
+    const imagePath = details.poster_path 
+        ? `${API_IMG_URL}${details.poster_path}`
+        : 'https://via.placeholder.com/500x750?text=Sem+Imagem';
+
+    let detailsHTML = `
+        <img src="${imagePath}" alt="Pôster de ${title}">
+        <div>
+            <h2>${title}</h2>
+            <p><strong>Rating:</strong> ${rating} / 10</p>
+            <h3>Sinopse</h3>
+            <p class="synopsis">${synopsis}</p>
+        </div>
+    `;
+
+    if (mediaType === 'tv' && details.seasons) {
+        detailsHTML += '<div><h3>Temporadas</h3>'; 
+        detailsHTML += '<div class="seasons-list">';
+        
+        details.seasons.forEach(season => {
+            if (season.season_number > 0) { 
+                detailsHTML += `
+                    <div class="season-item">
+                        <strong>${season.name}</strong> (${season.episode_count} episódios)
+                    </div>
+                `;
+            }
+        });
+        detailsHTML += '</div></div>';
+    }
+
+    container.innerHTML = detailsHTML;
+}
