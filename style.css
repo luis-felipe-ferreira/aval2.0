@@ -1,0 +1,247 @@
+
+:root {
+    --cor-principal: #0d1117;
+    --cor-secundaria: #161b22;
+    --cor-texto: #c9d1d9;
+    --cor-destaque: #58a6ff;
+    --fonte-padrao: Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-padrao);
+    background-color: var(--cor-principal); 
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--cor-destaque);
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+header {
+    background-color: var(--cor-secundaria);
+    padding: 1rem 0;
+    border-bottom: 1px solid #30363d;
+}
+
+header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+header h1 a {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header nav a {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+
+main {
+    padding: 2rem 0;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+#media-type-filter {
+    margin: 1rem 0;
+    display: flex;
+    gap: 15px;
+}
+#media-type-filter label {
+    cursor: pointer;
+}
+
+#filters {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#filters label {
+    font-weight: bold;
+}
+
+#filters select {
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #30363d;
+}
+
+#loading-spinner {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#error-message {
+    text-align: center;
+    padding: 1rem;
+    background-color: #4d0a0a;
+    color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+#movie-list-container {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+}
+
+.movie-card {
+    background-color: var(--cor-secundaria);
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+.movie-card img {
+    width: 100%;
+    aspect-ratio: 2 / 3; 
+    object-fit: cover;
+}
+.movie-card-info {
+    padding: 1rem;
+}
+.movie-card-info h3 {
+    color: var(--cor-texto);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.movie-card-info p {
+    font-size: 0.9rem;
+    color: #8b949e;
+}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#pagination button {
+    padding: 0.5rem 1rem;
+    background-color: var(--cor-destaque);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#pagination button:disabled {
+    background-color: #8b949e;
+    cursor: not-allowed;
+}
+
+#details-view button#back-to-home {
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--cor-destaque);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#details-content img {
+    border-radius: 8px;
+    max-width: 300px;
+    margin-bottom: 1rem;
+}
+#details-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+#details-content p {
+    margin-bottom: 1rem;
+}
+#details-content .synopsis {
+    line-height: 1.7;
+}
+.seasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.season-item {
+    background-color: var(--cor-secundaria);
+    padding: 0.75rem;
+    border-radius: 5px;
+}
+
+
+@media (min-width: 768px) {
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #filters {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #movie-list-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    #details-content {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
+    }
+    #details-content img {
+        grid-row: 1 / span 4;
+    }
+}
+
+@media (min-width: 1024px) {
+    #movie-list-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
