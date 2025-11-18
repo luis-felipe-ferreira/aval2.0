@@ -51,9 +51,9 @@ export function renderDetails(details, mediaType) {
         <img src="${imagePath}" alt="Pôster de ${title}">
         <div>
             <h2>${title}</h2>
-            <p><strong>Rating:</strong> ${rating} / 10</p>
+            <p><strong>Avaliação:</strong> ${rating} / 10</p>
             <h3>Sinopse</h3>
-            <p class="synopsis">${synopsis}</p>
+            <p class="Sinopse:">${synopsis}</p>
         </div>
     `;
 
@@ -114,3 +114,4 @@ export function showErrorMessage(show) {
         }
     }
 }
+
